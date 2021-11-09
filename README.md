@@ -4,5 +4,5 @@ Project cuối kì môn PRN211
 - Ngôn ngữ : C# .Net Core
 
 ## Cách upload nhé anh em
-- Mỗi người tạo 1 branches riêng nhé
+- Mỗi người tạo 1 branch riêng để up cho đỡ lỗi nhé
 - Có thể upload bằng cái gì cũng được ( Github Desktop, VS, VS Code, .. )
