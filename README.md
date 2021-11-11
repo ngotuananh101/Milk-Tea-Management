@@ -12,7 +12,7 @@ Project cuối kì môn PRN211
  - Khắc Hiếu : CRUD menu, account nhân viên
  - Thế Hùng : Xem menu
  - Tuấn Anh : In bill
- - Gia Long : Quản lí kho
- - Kim Long : - CRUD số lượng, Xem kho còn hàng không 
+ - Gia Long : Quản lí kho ( Có thể không có )
+ - Kim Long : - CRUD số lượng, Xem kho còn hàng không
 
 ## Các phần đã ghép
