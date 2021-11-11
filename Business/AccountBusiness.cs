@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MilkTeaManagement.Business
 {
@@ -15,20 +16,17 @@ namespace MilkTeaManagement.Business
         SqlConnection connection;
         SqlCommand command;
 
-        string GetConnectionString()
+        public string GetConnectionString()
         {
-            IConfiguration config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", true, true)
-                .Build();
+            IConfiguration config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json", true, true).Build();
             return config["ConnectionStrings:MilkTeaDB"];
         }
 
-        public List<Account> GetAccount(string username, string password, int role)
+        public List<Account> GetAccount(string username, string password)
         {
             List<Account> accounts = new List<Account>();
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("select * from Account where Username = '" + username + "' and Password = '" + password + "' and RoleId = " + role.ToString(), connection);
+            command = new SqlCommand("select * from Account where Username = '" + username + "' and Password = '" + password + "'", connection);
             try
             {
                 connection.Open();
