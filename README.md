@@ -6,3 +6,11 @@ Project cuối kì môn PRN211
 ## Cách upload nhé anh em
 - Mỗi người tạo 1 branch riêng để up cho đỡ lỗi nhé
 - Có thể upload bằng cái gì cũng được ( Github Desktop, VS, VS Code, .. )
+
+## Chia công việc
+ - Bá Hùng : Login, Xem thống kê, discount
+ - Khắc Hiếu : CRUD menu, account nhân viên
+ - Thế Hùng : Xem menu
+ - Tuấn Anh : In bill
+ - Gia Long : Quản lí kho
+ - Kim Long : - CRUD số lượng, Xem kho còn hàng không 
