@@ -14,3 +14,5 @@ Project cuối kì môn PRN211
  - Tuấn Anh : In bill
  - Gia Long : Quản lí kho
  - Kim Long : - CRUD số lượng, Xem kho còn hàng không 
+
+## Các phần đã ghép
