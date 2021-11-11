@@ -13,6 +13,6 @@ Project cuối kì môn PRN211
  - Thế Hùng : Xem menu
  - Tuấn Anh : In bill
  - Gia Long : Quản lí kho ( Có thể không có )
- - Kim Long : - CRUD số lượng, Xem kho còn hàng không
+ - Kim Long (https://github.com/longcodebad) : - Check out
 
 ## Các phần đã ghép

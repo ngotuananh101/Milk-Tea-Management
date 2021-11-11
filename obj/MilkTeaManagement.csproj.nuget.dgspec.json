@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ngotu\\Documents\\GitHub\\PRN211\\MilkTeaManagement\\MilkTeaManagement.csproj": {}
+    "C:\\Users\\ngotu\\Documents\\GitHub\\PRN211\\MilkTeaManagement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ngotu\\Documents\\GitHub\\PRN211\\MilkTeaManagement\\MilkTeaManagement.csproj": {
+    "C:\\Users\\ngotu\\Documents\\GitHub\\PRN211\\MilkTeaManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ngotu\\Documents\\GitHub\\PRN211\\MilkTeaManagement\\MilkTeaManagement.csproj",
+        "projectUniqueName": "C:\\Users\\ngotu\\Documents\\GitHub\\PRN211\\MilkTeaManagement.csproj",
         "projectName": "MilkTeaManagement",
-        "projectPath": "C:\\Users\\ngotu\\Documents\\GitHub\\PRN211\\MilkTeaManagement\\MilkTeaManagement.csproj",
+        "projectPath": "C:\\Users\\ngotu\\Documents\\GitHub\\PRN211\\MilkTeaManagement.csproj",
         "packagesPath": "C:\\Users\\ngotu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ngotu\\Documents\\GitHub\\PRN211\\MilkTeaManagement\\obj\\",
+        "outputPath": "C:\\Users\\ngotu\\Documents\\GitHub\\PRN211\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ngotu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,20 @@
       "frameworks": {
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
