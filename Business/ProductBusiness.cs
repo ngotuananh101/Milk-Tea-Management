@@ -30,9 +30,10 @@ namespace MenuCRUD
 
         string GetConnectionString()
         {
-            IConfiguration config = new ConfigurationBuilder().
-                SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json", true, true).Build();
-
+            IConfiguration config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", true, true)
+                .Build();
             return config["ConnectionStrings:MilkTeaDB"];
         }
 

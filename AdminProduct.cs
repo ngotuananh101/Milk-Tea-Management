@@ -11,12 +11,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MenuCRUD;
 using Microsoft.Data.SqlClient;
+using MilkTeaManagement.Business;
 
 namespace MilkTeaManagement
 {
     public partial class AdminProduct : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=HAKU;Initial Catalog = MilkTea; User ID = haku; Password=321");
+        SqlConnection con = new SqlConnection(new AccountBusiness().GetConnectionString());
         public AdminProduct()
         {
             InitializeComponent();
