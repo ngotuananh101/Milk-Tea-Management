@@ -73,5 +73,14 @@ namespace MilkTeaManagement
             panelDetail.Controls.Add(statics);
             statics.Show();
         }
+
+        private void btnProduct_Click(object sender, EventArgs e)
+        {
+            panelDetail.Controls.Clear();
+            AdminProduct statics = new AdminProduct();
+            statics.TopLevel = false;
+            panelDetail.Controls.Add(statics);
+            statics.Show();
+        }
     }
 }

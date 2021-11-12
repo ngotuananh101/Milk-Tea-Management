@@ -33,6 +33,7 @@ namespace MilkTeaManagement
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminMainMenu));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.btnStatic = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,7 +43,7 @@ namespace MilkTeaManagement
             this.btnExit = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelDetail = new System.Windows.Forms.Panel();
-            this.btnStatic = new System.Windows.Forms.Button();
+            this.btnProduct = new System.Windows.Forms.Button();
             this.leftPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
@@ -54,6 +55,7 @@ namespace MilkTeaManagement
             this.leftPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.leftPanel.BackColor = System.Drawing.SystemColors.Highlight;
+            this.leftPanel.Controls.Add(this.btnProduct);
             this.leftPanel.Controls.Add(this.btnStatic);
             this.leftPanel.Controls.Add(this.btnEmployee);
             this.leftPanel.Controls.Add(this.btnHome);
@@ -62,6 +64,23 @@ namespace MilkTeaManagement
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Size = new System.Drawing.Size(243, 618);
             this.leftPanel.TabIndex = 0;
+            // 
+            // btnStatic
+            // 
+            this.btnStatic.FlatAppearance.BorderSize = 0;
+            this.btnStatic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStatic.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnStatic.ForeColor = System.Drawing.Color.White;
+            this.btnStatic.Image = ((System.Drawing.Image)(resources.GetObject("btnStatic.Image")));
+            this.btnStatic.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStatic.Location = new System.Drawing.Point(36, 274);
+            this.btnStatic.Name = "btnStatic";
+            this.btnStatic.Size = new System.Drawing.Size(189, 61);
+            this.btnStatic.TabIndex = 5;
+            this.btnStatic.Text = "Static";
+            this.btnStatic.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnStatic.UseVisualStyleBackColor = true;
+            this.btnStatic.Click += new System.EventHandler(this.btnStatic_Click);
             // 
             // btnEmployee
             // 
@@ -172,22 +191,22 @@ namespace MilkTeaManagement
             this.panelDetail.Size = new System.Drawing.Size(1026, 618);
             this.panelDetail.TabIndex = 2;
             // 
-            // btnStatic
+            // btnProduct
             // 
-            this.btnStatic.FlatAppearance.BorderSize = 0;
-            this.btnStatic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStatic.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnStatic.ForeColor = System.Drawing.Color.White;
-            this.btnStatic.Image = ((System.Drawing.Image)(resources.GetObject("btnStatic.Image")));
-            this.btnStatic.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStatic.Location = new System.Drawing.Point(36, 274);
-            this.btnStatic.Name = "btnStatic";
-            this.btnStatic.Size = new System.Drawing.Size(189, 61);
-            this.btnStatic.TabIndex = 5;
-            this.btnStatic.Text = "Static";
-            this.btnStatic.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnStatic.UseVisualStyleBackColor = true;
-            this.btnStatic.Click += new System.EventHandler(this.btnStatic_Click);
+            this.btnProduct.FlatAppearance.BorderSize = 0;
+            this.btnProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProduct.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnProduct.ForeColor = System.Drawing.Color.White;
+            this.btnProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct.Image")));
+            this.btnProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProduct.Location = new System.Drawing.Point(36, 357);
+            this.btnProduct.Name = "btnProduct";
+            this.btnProduct.Size = new System.Drawing.Size(189, 61);
+            this.btnProduct.TabIndex = 6;
+            this.btnProduct.Text = "Product";
+            this.btnProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnProduct.UseVisualStyleBackColor = true;
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
             // AdminMainMenu
             // 
@@ -228,5 +247,6 @@ namespace MilkTeaManagement
         private System.Windows.Forms.Panel panelDetail;
         private System.Windows.Forms.Button btnEmployee;
         private System.Windows.Forms.Button btnStatic;
+        private System.Windows.Forms.Button btnProduct;
     }
 }
