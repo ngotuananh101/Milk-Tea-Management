@@ -10,6 +10,9 @@
     <Compile Update="AdminMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="AdminProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Login.cs">
       <SubType>Form</SubType>
     </Compile>
