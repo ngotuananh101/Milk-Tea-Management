@@ -53,13 +53,14 @@ namespace MilkTeaManagement
                     if (accounts[0].roleId == 2)
                     {
                         //Employee form
-                        MessageBox.Show("Employee", "", MessageBoxButtons.OK);
+                        
                     }
                     if (accounts[0].roleId == 1)
                     {
 
                         this.Hide();
-                        MessageBox.Show("Admin", "", MessageBoxButtons.OK);
+                        AdminMainMenu adminMain = new AdminMainMenu(accounts[0]);
+                        adminMain.ShowDialog();
                         // Statistic form = new Statistic();
                         //form.lblManagerId.Text = Database.GetUserId(Username, Password, Convert.ToInt32(cbbRole.SelectedValue));
                         // form.ShowDialog();
@@ -76,6 +77,21 @@ namespace MilkTeaManagement
             {
                 MessageBox.Show("Invalid Account or Password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
