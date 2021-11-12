@@ -33,6 +33,7 @@ namespace MilkTeaManagement
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminMainMenu));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.btnProduct = new System.Windows.Forms.Button();
             this.btnStatic = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@ namespace MilkTeaManagement
             this.btnExit = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelDetail = new System.Windows.Forms.Panel();
-            this.btnProduct = new System.Windows.Forms.Button();
             this.leftPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
@@ -64,6 +64,23 @@ namespace MilkTeaManagement
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Size = new System.Drawing.Size(243, 618);
             this.leftPanel.TabIndex = 0;
+            // 
+            // btnProduct
+            // 
+            this.btnProduct.FlatAppearance.BorderSize = 0;
+            this.btnProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProduct.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnProduct.ForeColor = System.Drawing.Color.White;
+            this.btnProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct.Image")));
+            this.btnProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProduct.Location = new System.Drawing.Point(36, 357);
+            this.btnProduct.Name = "btnProduct";
+            this.btnProduct.Size = new System.Drawing.Size(189, 61);
+            this.btnProduct.TabIndex = 6;
+            this.btnProduct.Text = "Product";
+            this.btnProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnProduct.UseVisualStyleBackColor = true;
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
             // btnStatic
             // 
@@ -118,10 +135,12 @@ namespace MilkTeaManagement
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(36, 12);
+            this.label1.Location = new System.Drawing.Point(55, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 30);
             this.label1.TabIndex = 2;
@@ -146,9 +165,9 @@ namespace MilkTeaManagement
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtWellcome.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtWellcome.ForeColor = System.Drawing.SystemColors.Window;
-            this.txtWellcome.Location = new System.Drawing.Point(917, 16);
+            this.txtWellcome.Location = new System.Drawing.Point(249, 16);
             this.txtWellcome.Name = "txtWellcome";
-            this.txtWellcome.Size = new System.Drawing.Size(290, 37);
+            this.txtWellcome.Size = new System.Drawing.Size(958, 37);
             this.txtWellcome.TabIndex = 4;
             this.txtWellcome.Text = "Wellcome, ";
             this.txtWellcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -156,9 +175,9 @@ namespace MilkTeaManagement
             // imgLogo
             // 
             this.imgLogo.Image = ((System.Drawing.Image)(resources.GetObject("imgLogo.Image")));
-            this.imgLogo.Location = new System.Drawing.Point(7, 7);
+            this.imgLogo.Location = new System.Drawing.Point(3, 6);
             this.imgLogo.Name = "imgLogo";
-            this.imgLogo.Size = new System.Drawing.Size(197, 54);
+            this.imgLogo.Size = new System.Drawing.Size(240, 58);
             this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgLogo.TabIndex = 0;
             this.imgLogo.TabStop = false;
@@ -190,23 +209,6 @@ namespace MilkTeaManagement
             this.panelDetail.Name = "panelDetail";
             this.panelDetail.Size = new System.Drawing.Size(1026, 618);
             this.panelDetail.TabIndex = 2;
-            // 
-            // btnProduct
-            // 
-            this.btnProduct.FlatAppearance.BorderSize = 0;
-            this.btnProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProduct.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnProduct.ForeColor = System.Drawing.Color.White;
-            this.btnProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct.Image")));
-            this.btnProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduct.Location = new System.Drawing.Point(36, 357);
-            this.btnProduct.Name = "btnProduct";
-            this.btnProduct.Size = new System.Drawing.Size(189, 61);
-            this.btnProduct.TabIndex = 6;
-            this.btnProduct.Text = "Product";
-            this.btnProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnProduct.UseVisualStyleBackColor = true;
-            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
             // AdminMainMenu
             // 
