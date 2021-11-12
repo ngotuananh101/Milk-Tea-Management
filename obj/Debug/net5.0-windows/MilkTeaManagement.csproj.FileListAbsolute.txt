@@ -50,3 +50,7 @@ C:\Users\ngotu\Documents\GitHub\PRN211\bin\Debug\net5.0-windows\runtimes\win-x86
 C:\Users\ngotu\Documents\GitHub\PRN211\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\ngotu\Documents\GitHub\PRN211\bin\Debug\net5.0-windows\appsettings.json
 C:\Users\ngotu\Documents\GitHub\PRN211\obj\Debug\net5.0-windows\MilkTeaManagement.AdminMainMenu.resources
+C:\Users\ngotu\Documents\GitHub\PRN211\obj\Debug\net5.0-windows\MilkTeaManagement.AdminHome.resources
+C:\Users\ngotu\Documents\GitHub\PRN211\obj\Debug\net5.0-windows\MilkTeaManagement.AdminEmployee.resources
+C:\Users\ngotu\Documents\GitHub\PRN211\obj\Debug\net5.0-windows\MilkTeaManagement.AdminStatic.resources
+C:\Users\ngotu\Documents\GitHub\PRN211\bin\Debug\net5.0-windows\Microsoft.Office.Interop.Excel.dll

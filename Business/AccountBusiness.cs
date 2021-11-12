@@ -56,7 +56,107 @@ namespace MilkTeaManagement.Business
 
             return accounts;
         }
+
+        public List<Account> GetAccounts()
+        {
+            List<Account> categories = new List<Account>();
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select * from Account", connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows == true)
+                {
+                    while (reader.Read())
+                    {
+                        // Doc tung record vao categories
+                        categories.Add(new Account { userName = reader.GetString("Username"), passWord = reader.GetString("Password"), roleId = reader.GetInt32("RoleId"), userId = reader.GetString("UserId") });
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return categories;
+        }
+
+        public void InsertAccount(Account account)
+        {
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("Insert into Account(Username, Password, RoleId, UserId) values(@Username, @Password, @RoleId, @UserId)", connection);
+            command.Parameters.AddWithValue("@Username", account.userName);
+            command.Parameters.AddWithValue("@Password", account.passWord);
+            command.Parameters.AddWithValue("@RoleId", account.roleId);
+            command.Parameters.AddWithValue("@UserId", account.userId);
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public void DeleteAccount(Account account)
+        {
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("delete from Account where UserId= '" + account.userId + "'", connection);
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                MessageBox.Show("The data has been deleted");
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public void UpdateAccount(Account account)
+        {
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("Update Account set Username = '" + account.userName + "', Password ='" + account.passWord + "', RoleId = '" + account.roleId + "' where UserId = '" + account.userId + "'", connection);
+
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                MessageBox.Show("Data has been updated!");
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
+
+
 
     public class Account
     {
