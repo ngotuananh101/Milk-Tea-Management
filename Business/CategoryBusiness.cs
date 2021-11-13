@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Text;
+using Microsoft.Data.SqlClient;
 
 namespace ShoppingCartNew.Business
 {
@@ -28,7 +29,7 @@ namespace ShoppingCartNew.Business
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", true, true)
                 .Build();
-            return config["ConnectionString:MilkTeaDB"];
+            return config["ConnectionStrings:MilkTeaDB"];
         }
 
         public List<Category> GetCategories()

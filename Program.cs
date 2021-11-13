@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MilkTeaManagement;
 
 namespace ShoppingCartNew
 {
@@ -17,7 +18,7 @@ namespace ShoppingCartNew
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ShoppingCart());
+            Application.Run(new Login());
         }
     }
 }

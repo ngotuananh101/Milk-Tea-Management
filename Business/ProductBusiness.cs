@@ -12,14 +12,13 @@ namespace MenuCRUD
 {
     class Product
     {
-        public int ProductId { get; set; }
+        public string ProductId { get; set; }
         public string ProductName { get; set; }
         public int Quantity { get; set; }
         public int Price { get; set; }
         public string Origin { get; set; }
         public int CategoryId { get; set; }
-
-        public string Picture { get; set; }
+        public string Image { get; set; }
 
     }
 
@@ -53,12 +52,13 @@ namespace MenuCRUD
                         // Doc tung record vao categories
                         categories.Add(new Product
                         {
-                            ProductId = reader.GetInt32("ProductId"),
+                            ProductId = reader.GetString("ProductId"),
                             ProductName = reader.GetString("ProductName"),
                             Quantity = reader.GetInt32("Quantity"),
                             Price = reader.GetInt32("Price"),
                             Origin = reader.GetString("Origin"),
-                            CategoryId = reader.GetInt32("CategoryId")
+                            CategoryId = reader.GetInt32("CategoryId"),
+                            Image = reader.GetString("Image")
                         });
                     }
                 }
@@ -137,12 +137,12 @@ namespace MenuCRUD
                     {
                         products.Add(new Product
                         {
-                            ProductId = reader.GetInt32("ProductId"),
+                            ProductId = reader.GetString("ProductId"),
                             ProductName = reader.GetString("ProductName"),
                             Price = reader.GetInt32("Price"),
                             CategoryId = reader.GetInt32
                                 ("CategoryId"),
-                            Picture = reader.GetString("Image")
+                            Image = reader.GetString("Image")
                         });
                     }
                 }

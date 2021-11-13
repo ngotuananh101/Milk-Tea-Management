@@ -55,3 +55,6 @@ C:\Users\ngotu\Documents\GitHub\PRN211\obj\Debug\net5.0-windows\MilkTeaManagemen
 C:\Users\ngotu\Documents\GitHub\PRN211\obj\Debug\net5.0-windows\MilkTeaManagement.AdminStatic.resources
 C:\Users\ngotu\Documents\GitHub\PRN211\bin\Debug\net5.0-windows\Microsoft.Office.Interop.Excel.dll
 C:\Users\ngotu\Documents\GitHub\PRN211\obj\Debug\net5.0-windows\MilkTeaManagement.AdminProduct.resources
+C:\Users\ngotu\Documents\GitHub\PRN211\obj\Debug\net5.0-windows\ShoppingCartNew.ShoppingCart.resources
+C:\Users\ngotu\Documents\GitHub\PRN211\obj\Debug\net5.0-windows\DemoDataAccess.UserControl1.resources
+C:\Users\ngotu\Documents\GitHub\PRN211\obj\Debug\net5.0-windows\MilkTeaManagement.EmployeeMainMenu.resources

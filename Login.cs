@@ -53,7 +53,11 @@ namespace MilkTeaManagement
                     if (accounts[0].roleId == 2)
                     {
                         //Employee form
-                        
+                        this.Hide();
+                        EmployeeMainMenu employeeMain = new EmployeeMainMenu(accounts[0]);
+                        employeeMain.ShowDialog();
+                        this.Close();
+
                     }
                     if (accounts[0].roleId == 1)
                     {

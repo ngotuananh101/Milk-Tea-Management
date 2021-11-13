@@ -33,6 +33,7 @@ namespace MilkTeaManagement
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminMainMenu));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.btnProduct = new System.Windows.Forms.Button();
             this.btnStatic = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
@@ -40,14 +41,15 @@ namespace MilkTeaManagement
             this.label1 = new System.Windows.Forms.Label();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.txtWellcome = new System.Windows.Forms.Label();
-            this.imgLogo = new System.Windows.Forms.PictureBox();
             this.btnExit = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelDetail = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.leftPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // leftPanel
@@ -55,6 +57,7 @@ namespace MilkTeaManagement
             this.leftPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.leftPanel.BackColor = System.Drawing.SystemColors.Highlight;
+            this.leftPanel.Controls.Add(this.btnLogout);
             this.leftPanel.Controls.Add(this.btnProduct);
             this.leftPanel.Controls.Add(this.btnStatic);
             this.leftPanel.Controls.Add(this.btnEmployee);
@@ -64,6 +67,23 @@ namespace MilkTeaManagement
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Size = new System.Drawing.Size(243, 618);
             this.leftPanel.TabIndex = 0;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(36, 442);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(189, 61);
+            this.btnLogout.TabIndex = 7;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnProduct
             // 
@@ -151,8 +171,9 @@ namespace MilkTeaManagement
             this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainPanel.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.mainPanel.Controls.Add(this.label5);
+            this.mainPanel.Controls.Add(this.pictureBox1);
             this.mainPanel.Controls.Add(this.txtWellcome);
-            this.mainPanel.Controls.Add(this.imgLogo);
             this.mainPanel.Controls.Add(this.btnExit);
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
@@ -165,22 +186,13 @@ namespace MilkTeaManagement
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtWellcome.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtWellcome.ForeColor = System.Drawing.SystemColors.Window;
-            this.txtWellcome.Location = new System.Drawing.Point(249, 16);
+            this.txtWellcome.Location = new System.Drawing.Point(927, 16);
             this.txtWellcome.Name = "txtWellcome";
-            this.txtWellcome.Size = new System.Drawing.Size(958, 37);
+            this.txtWellcome.Size = new System.Drawing.Size(280, 37);
             this.txtWellcome.TabIndex = 4;
             this.txtWellcome.Text = "Wellcome, ";
             this.txtWellcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // imgLogo
-            // 
-            this.imgLogo.Image = ((System.Drawing.Image)(resources.GetObject("imgLogo.Image")));
-            this.imgLogo.Location = new System.Drawing.Point(3, 6);
-            this.imgLogo.Name = "imgLogo";
-            this.imgLogo.Size = new System.Drawing.Size(240, 58);
-            this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgLogo.TabIndex = 0;
-            this.imgLogo.TabStop = false;
+            this.txtWellcome.Click += new System.EventHandler(this.txtWellcome_Click);
             // 
             // btnExit
             // 
@@ -210,6 +222,27 @@ namespace MilkTeaManagement
             this.panelDetail.Size = new System.Drawing.Size(1026, 618);
             this.panelDetail.TabIndex = 2;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.SystemColors.Window;
+            this.label5.Location = new System.Drawing.Point(59, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(169, 50);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Milk Tea";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(46, 45);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // AdminMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -227,8 +260,9 @@ namespace MilkTeaManagement
             this.leftPanel.ResumeLayout(false);
             this.leftPanel.PerformLayout();
             this.mainPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
+            this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,7 +274,6 @@ namespace MilkTeaManagement
         private System.Windows.Forms.Panel leftPanel;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.PictureBox btnExit;
-        private System.Windows.Forms.PictureBox imgLogo;
         private System.Windows.Forms.Label txtWellcome;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
@@ -250,5 +283,8 @@ namespace MilkTeaManagement
         private System.Windows.Forms.Button btnEmployee;
         private System.Windows.Forms.Button btnStatic;
         private System.Windows.Forms.Button btnProduct;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

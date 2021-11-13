@@ -82,5 +82,18 @@ namespace MilkTeaManagement
             panelDetail.Controls.Add(product);
             product.Show();
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login login = new Login();
+            login.ShowDialog();
+            this.Close();
+        }
+
+        private void txtWellcome_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace MilkTeaManagement
             txtPrice.DataBindings.Clear();
             txtOrigin.DataBindings.Clear();
             comboBox1.DataBindings.Clear();
-            //txtPicture.DataBindings.Clear();
+            txtPicture.DataBindings.Clear();
 
             txtProductId.DataBindings.Add("Text", products, "ProductId");
             txtProductName.DataBindings.Add("Text", products, "ProductName");
@@ -42,7 +42,7 @@ namespace MilkTeaManagement
             txtPrice.DataBindings.Add("Text", products, "Price");
             txtOrigin.DataBindings.Add("Text", products, "Origin");
             comboBox1.DataBindings.Add("Text", products, "CategoryId");
-            //txtPicture.DataBindings.Add("Text", products, "Picture");
+            txtPicture.DataBindings.Add("Text", products, "Image");
 
 
 
@@ -173,7 +173,7 @@ namespace MilkTeaManagement
             }
             try
             {
-                Insert(Convert.ToInt32(txtProductId.Text), txtProductName.Text, Convert.ToInt32(txtQuantity.Text)
+                Insert(txtProductId.Text, txtProductName.Text, Convert.ToInt32(txtQuantity.Text)
                     , Convert.ToInt32(txtPrice.Text), txtOrigin.Text, Convert.ToInt32(comboBox1.Text), txtPicture.Text);
 
                 LoadProduct();
@@ -193,10 +193,10 @@ namespace MilkTeaManagement
             }
         }
 
-        public void Insert(int ProductId, string ProductName, int Quantity, int Price, String Origin, int CategoryId, string image)
+        public void Insert(string ProductId, string ProductName, int Quantity, int Price, String Origin, int CategoryId, string image)
         {
             con.Open();
-            using (SqlCommand command = new SqlCommand("Insert into Product(ProductId, ProductName, Quantity, Price, Origin, CategoryId, Picture) values(@ProductId, @ProductName, @Quantity, @Price, @Origin, @CategoryId, @image)", con))
+            using (SqlCommand command = new SqlCommand("Insert into Product(ProductId, ProductName, Quantity, Price, Origin, CategoryId, Image) values(@ProductId, @ProductName, @Quantity, @Price, @Origin, @CategoryId, @image)", con))
             {
                 command.CommandType = CommandType.Text;
                 command.Parameters.AddWithValue("@ProductId", ProductId);
@@ -237,6 +237,12 @@ namespace MilkTeaManagement
             };
             catList.DeleteProduct(product);
             LoadProduct();
+        }
+
+        private void txtPicture_TextChanged(object sender, EventArgs e)
+        {
+            Image img = Image.FromFile(txtPicture.Text);
+            pictureBox1.Image = img;
         }
     }
 }

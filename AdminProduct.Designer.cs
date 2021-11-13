@@ -153,6 +153,7 @@ namespace MilkTeaManagement
             this.txtPicture.Name = "txtPicture";
             this.txtPicture.Size = new System.Drawing.Size(270, 33);
             this.txtPicture.TabIndex = 14;
+            this.txtPicture.TextChanged += new System.EventHandler(this.txtPicture_TextChanged);
             // 
             // txtOrigin
             // 
