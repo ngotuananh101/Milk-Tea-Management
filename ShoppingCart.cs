@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MenuCRUD;
 
 namespace ShoppingCartNew
 {
@@ -53,7 +54,7 @@ namespace ShoppingCartNew
             { 
                 var product = new Product()
                 {
-                    CategoryID = Convert.ToInt32(comboCategory.SelectedValue.GetHashCode())
+                    CategoryId = Convert.ToInt32(comboCategory.SelectedValue.GetHashCode())
                 };
                 List<Product> productscat = proList.GetProductsWithCatID(product);
                 dataGridView1.DataSource = productscat;
