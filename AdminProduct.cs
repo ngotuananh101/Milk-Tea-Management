@@ -174,7 +174,7 @@ namespace MilkTeaManagement
             try
             {
                 Insert(Convert.ToInt32(txtProductId.Text), txtProductName.Text, Convert.ToInt32(txtQuantity.Text)
-                    , Convert.ToInt32(txtPrice.Text), txtOrigin.Text, Convert.ToInt32(comboBox1.Text), ConvertImageToBytes(pictureBox1.Image));
+                    , Convert.ToInt32(txtPrice.Text), txtOrigin.Text, Convert.ToInt32(comboBox1.Text), txtPicture.Text);
 
                 LoadProduct();
             }
@@ -193,7 +193,7 @@ namespace MilkTeaManagement
             }
         }
 
-        public void Insert(int ProductId, string ProductName, int Quantity, int Price, String Origin, int CategoryId, byte[] image)
+        public void Insert(int ProductId, string ProductName, int Quantity, int Price, String Origin, int CategoryId, string image)
         {
             con.Open();
             using (SqlCommand command = new SqlCommand("Insert into Product(ProductId, ProductName, Quantity, Price, Origin, CategoryId, Picture) values(@ProductId, @ProductName, @Quantity, @Price, @Origin, @CategoryId, @image)", con))

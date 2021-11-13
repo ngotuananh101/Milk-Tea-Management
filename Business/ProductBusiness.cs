@@ -18,8 +18,8 @@ namespace MenuCRUD
         public int Price { get; set; }
         public string Origin { get; set; }
         public int CategoryId { get; set; }
-       
-        public byte[] Picture { get; set; }
+
+        public string Picture { get; set; }
 
     }
 
@@ -51,9 +51,15 @@ namespace MenuCRUD
                     while (reader.Read())
                     {
                         // Doc tung record vao categories
-                        categories.Add(new Product { ProductId = reader.GetInt32("ProductId"), ProductName = reader.GetString("ProductName"),
-                            Quantity = reader.GetInt32("Quantity"), Price = reader.GetInt32("Price"), Origin = reader.GetString("Origin"), 
-                            CategoryId = reader.GetInt32("CategoryId") });
+                        categories.Add(new Product
+                        {
+                            ProductId = reader.GetInt32("ProductId"),
+                            ProductName = reader.GetString("ProductName"),
+                            Quantity = reader.GetInt32("Quantity"),
+                            Price = reader.GetInt32("Price"),
+                            Origin = reader.GetString("Origin"),
+                            CategoryId = reader.GetInt32("CategoryId")
+                        });
                     }
                 }
             }
@@ -73,8 +79,8 @@ namespace MenuCRUD
         {
             connection = new SqlConnection(GetConnectionString());
             command = new SqlCommand("Update Product set  ProductName ='" + product.ProductName + "', " +
-                "Quantity = '" + product.Quantity + "',Price = '"+product.Price+"'," +
-                " Origin = '"+product.Origin+"', CategoryId = '"+product.CategoryId+"'" +
+                "Quantity = '" + product.Quantity + "',Price = '" + product.Price + "'," +
+                " Origin = '" + product.Origin + "', CategoryId = '" + product.CategoryId + "'" +
                 " where ProductId = '" + product.ProductId + "'", connection);
 
 
@@ -115,6 +121,43 @@ namespace MenuCRUD
                 connection.Close();
             }
         }
+        public List<Product> GetProductsWithCatID(Product product)
+        {
+            List<Product> products = new List<Product>();
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select * from Product where CategoryId = @catID", connection);
+            command.Parameters.AddWithValue("@catID", product.CategoryId);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows == true)
+                {
+                    while (reader.Read())
+                    {
+                        products.Add(new Product
+                        {
+                            ProductId = reader.GetInt32("ProductId"),
+                            ProductName = reader.GetString("ProductName"),
+                            Price = reader.GetInt32("Price"),
+                            CategoryId = reader.GetInt32
+                                ("CategoryId"),
+                            Picture = reader.GetString("Image")
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return products;
+        }
 
     }
-    }
+}
