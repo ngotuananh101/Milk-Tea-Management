@@ -102,6 +102,62 @@ namespace MilkTeaManagement.Business
             return manager;
         }
 
+        public void InsertManager(Manager manager)
+        {
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("INSERT INTO [dbo].[Manager] ([ManagerName],[ManagerDob],[ManagerEmail],[Phone],[Address],[Gender],[UserId]) VALUES ( @ManagerName, @ManagerDob, @ManagerEmail, @Phone, @Address, @Gender, @UserId)", connection);
+            command.Parameters.AddWithValue("@ManagerName", manager.managerName);
+            command.Parameters.AddWithValue("@ManagerDob", manager.managerDob);
+            command.Parameters.AddWithValue("@ManagerEmail", manager.managerEmail);
+            command.Parameters.AddWithValue("@Phone", manager.phone);
+            command.Parameters.AddWithValue("@Gender", manager.gender);
+            command.Parameters.AddWithValue("@Address", manager.address);
+            command.Parameters.AddWithValue("@UserId", manager.userId);
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public void UpdateManager(Manager manager)
+        {
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("UPDATE [dbo].[Manager] SET [ManagerName] = @ManagerName ,[ManagerDob] = @ManagerDob ,[ManagerEmail] = @ManagerEmail ,[Phone] = @Phone,[Address] = @Address,[Gender] = @Gender,[UserId] = @UserId WHERE [ManagerId] = @ManagerId", connection);
+            command.Parameters.AddWithValue("@ManagerName", manager.managerName);
+            command.Parameters.AddWithValue("@ManagerDob", manager.managerDob);
+            command.Parameters.AddWithValue("@ManagerEmail", manager.managerEmail);
+            command.Parameters.AddWithValue("@Phone", manager.phone);
+            command.Parameters.AddWithValue("@Gender", manager.gender);
+            command.Parameters.AddWithValue("@Address", manager.address);
+            command.Parameters.AddWithValue("@UserId", manager.userId);
+            command.Parameters.AddWithValue("@ManagerId", manager.managerId);
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
     }
 
     public class Manager

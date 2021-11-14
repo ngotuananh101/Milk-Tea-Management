@@ -53,13 +53,27 @@ namespace MilkTeaDemo
 
                 if (account.roleId == 1)
                 {
+                    ManagerBusiness mb = new ManagerBusiness();
+                    Manager manager = new Manager
+                    {
+                        managerId = txtID.Text,
+                        managerName = txtName.Text,
+                        managerDob = txtDob.Text,
+                        managerEmail = txtEmail.Text,
+                        phone = txtPhone.Text,
+                        address = txtAddress.Text,
+                        gender = rbMale.Checked,
+                        userId = account.userId
+                    };
                     if (addOrEdit == 1)
                     {
                         // add new manager info
+                        mb.InsertManager(manager);
 
                     }else if (addOrEdit == 2)
                     {
                         // edit manager info
+                        mb.UpdateManager(manager);
                     }
                 }
                 else if(account.roleId == 2)
