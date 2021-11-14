@@ -30,7 +30,6 @@ namespace MilkTeaManagement
             var products = catList.GetProducts();
             txtProductId.DataBindings.Clear();
             txtProductName.DataBindings.Clear();
-            txtQuantity.DataBindings.Clear();
             txtPrice.DataBindings.Clear();
             txtOrigin.DataBindings.Clear();
             comboBox1.DataBindings.Clear();
@@ -38,7 +37,6 @@ namespace MilkTeaManagement
 
             txtProductId.DataBindings.Add("Text", products, "ProductId");
             txtProductName.DataBindings.Add("Text", products, "ProductName");
-            txtQuantity.DataBindings.Add("Text", products, "Quantity");
             txtPrice.DataBindings.Add("Text", products, "Price");
             txtOrigin.DataBindings.Add("Text", products, "Origin");
             comboBox1.DataBindings.Add("Text", products, "CategoryId");
@@ -77,14 +75,6 @@ namespace MilkTeaManagement
 
             }
 
-            Regex regQuantity = new Regex(@"^[0-9\s]+$");
-            if (!regQuantity.IsMatch(txtQuantity.Text.Trim()))
-            {
-                flag = false;
-                strError += "Invalid Quantity!\n";
-                txtQuantity.Focus();
-
-            }
 
             Regex regPrice = new Regex(@"^[0-9\s]+$");
             if (!regPrice.IsMatch(txtPrice.Text.Trim()))
@@ -149,7 +139,6 @@ namespace MilkTeaManagement
         {
             txtProductId.Text = "";
             txtProductName.Text = "";
-            txtQuantity.Text = "";
             txtPrice.Text = "";
             txtOrigin.Text = "";
             comboBox1.Text = "";
@@ -164,7 +153,6 @@ namespace MilkTeaManagement
                 String strResult = "";
                 strResult += "ProductId: " + txtProductId.Text.Trim() + "\n";
                 strResult += "ProductName: " + txtProductName.Text.Trim() + "\n";
-                strResult += "Quantity: " + txtQuantity.Text.Trim() + "\n";
                 strResult += "Price: " + txtPrice.Text.Trim() + "\n";
                 strResult += "Origin: " + txtOrigin.Text.Trim() + "\n";
                 strResult += "CategoryId: " + comboBox1.Text.Trim();
@@ -173,7 +161,7 @@ namespace MilkTeaManagement
             }
             try
             {
-                Insert(txtProductId.Text, txtProductName.Text, Convert.ToInt32(txtQuantity.Text)
+                Insert(txtProductId.Text, txtProductName.Text
                     , Convert.ToInt32(txtPrice.Text), txtOrigin.Text, Convert.ToInt32(comboBox1.Text), txtPicture.Text);
 
                 LoadProduct();
@@ -193,15 +181,14 @@ namespace MilkTeaManagement
             }
         }
 
-        public void Insert(string ProductId, string ProductName, int Quantity, int Price, String Origin, int CategoryId, string image)
+        public void Insert(string ProductId, string ProductName, int Price, String Origin, int CategoryId, string image)
         {
             con.Open();
-            using (SqlCommand command = new SqlCommand("Insert into Product(ProductId, ProductName, Quantity, Price, Origin, CategoryId, Image) values(@ProductId, @ProductName, @Quantity, @Price, @Origin, @CategoryId, @image)", con))
+            using (SqlCommand command = new SqlCommand("Insert into Product(ProductId, ProductName, Price, Origin, CategoryId, Image) values(@ProductId, @ProductName, @Price, @Origin, @CategoryId, @image)", con))
             {
                 command.CommandType = CommandType.Text;
                 command.Parameters.AddWithValue("@ProductId", ProductId);
                 command.Parameters.AddWithValue("@ProductName", ProductName);
-                command.Parameters.AddWithValue("@Quantity", Quantity);
                 command.Parameters.AddWithValue("@Price", Price);
                 command.Parameters.AddWithValue("@Origin", Origin);
                 command.Parameters.AddWithValue("@CategoryId", CategoryId);
@@ -215,7 +202,6 @@ namespace MilkTeaManagement
             var product = new Product
             {
                 ProductName = txtProductName.Text,
-                Quantity = Convert.ToInt32(txtQuantity.Text),
                 Price = Convert.ToInt32(txtPrice.Text),
                 Origin = txtOrigin.Text,
                 CategoryId = Convert.ToInt32(comboBox1.Text)
@@ -229,7 +215,6 @@ namespace MilkTeaManagement
             var product = new Product
             {
                 ProductName = txtProductName.Text,
-                Quantity = Convert.ToInt32(txtQuantity.Text),
                 Price = Convert.ToInt32(txtPrice.Text),
                 Origin = txtOrigin.Text,
                 CategoryId = Convert.ToInt32(comboBox1.Text)

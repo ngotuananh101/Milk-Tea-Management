@@ -57,6 +57,25 @@ namespace MilkTeaManagement.Business
 
             return ordersDetails;
         }
+        public void InsertOrderDetail(OrdersDetail order)
+        {
+            try
+            {
+                connection = new SqlConnection(GetConnectionString());
+                command = new SqlCommand(
+                    "INSERT INTO [dbo].[OrdersDetail] ([OrderId],[ProductName],[Quantity],[Price]) VALUES ('"+order.orderId+"','"+order.productName+"','"+order.quantity+"','"+order.price+"')", connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 
     public class OrdersDetail

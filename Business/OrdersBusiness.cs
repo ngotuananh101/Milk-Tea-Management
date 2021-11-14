@@ -58,6 +58,62 @@ namespace MilkTeaManagement.Business
 
             return orders;
         }
+
+        public Order Get1Orders()
+        {
+            Order order = null;
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("SELECT TOP (1) * FROM Orders ORDER BY [OrderId] DESC", connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows == true)
+                {
+                    while (reader.Read())
+                    {
+                        order = new Order
+                        {
+                            orderId = reader.GetInt32("OrderId"),
+                            employeeId = reader.GetString("EmployeeId"),
+                            total = reader.GetDecimal("Total"),
+                            date = reader.GetDateTime("DateCreate")
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return order;
+        }
+
+        public void InsertOrder(Order order)
+        {
+            try
+            {
+                connection = new SqlConnection(GetConnectionString());
+                command = new SqlCommand(
+                    "INSERT INTO [Orders] ([EmployeeId],[Total],[DateCreate]) VALUES ('" + order.employeeId + "','" +
+                    order.total + "','" + order.date + "')", connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 
     public class Order

@@ -90,7 +90,7 @@ namespace MilkTeaManagement
         {
             LoadAccount();
             con.Open();
-            SqlCommand cmd = new SqlCommand("Select RoleId from Role", con);
+            SqlCommand cmd = new SqlCommand("Select * from Role", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -154,6 +154,22 @@ namespace MilkTeaManagement
 
             catList.UpdateAccount(account);
             LoadAccount();
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+
+            if (cboRoleId.SelectedIndex == 0)
+            {
+                btnEditManager.Visible = true;
+                btnEditInfo.Visible = false;
+            }else if (cboRoleId.SelectedIndex == 1)
+            {
+                btnEditManager.Visible = false;
+                btnEditInfo.Visible = true;
+            }
+            
+            // MessageBox.Show(cboRoleId.SelectedIndex.ToString(), cboRoleId.SelectedText);
         }
     }
 }

@@ -14,7 +14,6 @@ namespace MenuCRUD
     {
         public string ProductId { get; set; }
         public string ProductName { get; set; }
-        public int Quantity { get; set; }
         public int Price { get; set; }
         public string Origin { get; set; }
         public int CategoryId { get; set; }
@@ -54,7 +53,6 @@ namespace MenuCRUD
                         {
                             ProductId = reader.GetString("ProductId"),
                             ProductName = reader.GetString("ProductName"),
-                            Quantity = reader.GetInt32("Quantity"),
                             Price = reader.GetInt32("Price"),
                             Origin = reader.GetString("Origin"),
                             CategoryId = reader.GetInt32("CategoryId"),
@@ -79,7 +77,7 @@ namespace MenuCRUD
         {
             connection = new SqlConnection(GetConnectionString());
             command = new SqlCommand("Update Product set  ProductName ='" + product.ProductName + "', " +
-                "Quantity = '" + product.Quantity + "',Price = '" + product.Price + "'," +
+                "Price = '" + product.Price + "'," +
                 " Origin = '" + product.Origin + "', CategoryId = '" + product.CategoryId + "'" +
                 " where ProductId = '" + product.ProductId + "'", connection);
 
