@@ -215,5 +215,13 @@ namespace MilkTeaManagement
             // e.Graphics.DrawString(string.Format("{0,-75}{1,-10}", "Total: ", CalculateFreight().ToString()), new Font("Arial", 5, FontStyle.Bold), Brushes.Black, 10, 540);
             // e.Graphics.DrawString("Thank you ! See you later !!", new Font("Arial", 5, FontStyle.Bold), Brushes.Black, 10, 90);
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login login = new Login();
+            login.ShowDialog();
+            this.Close();
+        }
     }
 }

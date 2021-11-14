@@ -40,7 +40,7 @@ namespace MilkTeaManagement.Business
                         orders.Add(new Order
                         {
                             orderId = reader.GetInt32("OrderId"),
-                            employeeId = reader.GetString("EmployeeId"),
+                            employeeId = reader.GetInt32("EmployeeId").ToString(),
                             total = reader.GetDecimal("Total"),
                             date = reader.GetDateTime("DateCreate")
                         });
@@ -75,7 +75,7 @@ namespace MilkTeaManagement.Business
                         order = new Order
                         {
                             orderId = reader.GetInt32("OrderId"),
-                            employeeId = reader.GetString("EmployeeId"),
+                            employeeId = reader.GetInt32("EmployeeId").ToString(),
                             total = reader.GetDecimal("Total"),
                             date = reader.GetDateTime("DateCreate")
                         };

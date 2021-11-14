@@ -39,14 +39,14 @@ namespace MilkTeaManagement.Business
                     {
                         employees.Add(new Employee
                         {
-                            employeeId = reader.GetString("EmployeeId"),
+                            employeeId = reader.GetInt32("EmployeeId").ToString(),
                             employeeName = reader.GetString("EmployeeName"),
                             employeeDob = reader.GetString("EmployeeDob"),
                             employeeEmail = reader.GetString("EmployeeEmail"),
                             phone = reader.GetString("Phone"),
                             address = reader.GetString("Address"),
                             gender = reader.GetBoolean("Gender"),
-                            userId = reader.GetString("UserId")
+                            userId = reader.GetInt32("UserId").ToString()
                         });
                     }
                 }
@@ -76,7 +76,7 @@ namespace MilkTeaManagement.Business
                 {
                     while (reader.Read())
                     {
-                        managerId = reader.GetString("ManagerId");
+                        managerId = reader.GetInt32("ManagerId").ToString();
                     }
                 }
             }

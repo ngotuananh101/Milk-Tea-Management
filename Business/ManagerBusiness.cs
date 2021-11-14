@@ -39,14 +39,14 @@ namespace MilkTeaManagement.Business
                     {
                         managers.Add(new Manager
                         {
-                            managerId = reader.GetString("ManagerId"),
+                            managerId = reader.GetInt32("ManagerId").ToString(),
                             managerName = reader.GetString("ManagerName"),
                             managerDob = reader.GetString("ManagerDob"),
                             managerEmail = reader.GetString("ManagerEmail"),
                             phone = reader.GetString("Phone"),
                             address = reader.GetString("Address"),
                             gender = reader.GetBoolean("Gender"),
-                            userId = reader.GetString("UserId")
+                            userId = reader.GetInt32("UserId").ToString()
                         });
                     }
                 }
