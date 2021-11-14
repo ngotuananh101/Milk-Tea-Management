@@ -62,6 +62,45 @@ namespace MilkTeaManagement.Business
 
             return managers;
         }
+        public Manager GetManagerByUserID(int userId)
+        {
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("SELECT [ManagerId],[ManagerName],[ManagerDob],[ManagerEmail],[Phone],[Address],[Gender],[UserId] FROM [dbo].[Manager] WHERE [UserId]=@UserId", connection);
+            command.Parameters.AddWithValue("@UserId", userId);
+            Manager manager = null;
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows == true)
+                {
+                    while (reader.Read())
+                    {
+                        manager = new Manager
+                        {
+                            managerId = reader.GetInt32("ManagerId").ToString(),
+                            managerName = reader.GetString("ManagerName"),
+                            managerDob = reader.GetString("ManagerDob"),
+                            managerEmail = reader.GetString("ManagerEmail"),
+                            phone = reader.GetString("Phone"),
+                            address = reader.GetString("Address"),
+                            gender = reader.GetBoolean("Gender"),
+                            userId = reader.GetInt32("UserId").ToString()
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return manager;
+        }
 
     }
 

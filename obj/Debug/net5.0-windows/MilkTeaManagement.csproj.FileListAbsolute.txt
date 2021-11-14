@@ -58,3 +58,4 @@ C:\Users\ngotu\Documents\GitHub\PRN211\obj\Debug\net5.0-windows\MilkTeaManagemen
 C:\Users\ngotu\Documents\GitHub\PRN211\obj\Debug\net5.0-windows\ShoppingCartNew.ShoppingCart.resources
 C:\Users\ngotu\Documents\GitHub\PRN211\obj\Debug\net5.0-windows\DemoDataAccess.UserControl1.resources
 C:\Users\ngotu\Documents\GitHub\PRN211\obj\Debug\net5.0-windows\MilkTeaManagement.EmployeeMainMenu.resources
+C:\Users\ngotu\Documents\GitHub\PRN211\obj\Debug\net5.0-windows\MilkTeaDemo.EmployeeDetail.resources

@@ -43,7 +43,6 @@ namespace MilkTeaManagement
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnEditInfo = new System.Windows.Forms.Button();
-            this.btnEditManager = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,7 +88,7 @@ namespace MilkTeaManagement
             this.btnCancel.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(1418, 569);
+            this.btnCancel.Location = new System.Drawing.Point(1418, 496);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(250, 40);
@@ -117,7 +116,7 @@ namespace MilkTeaManagement
             this.btnUpdate.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(1418, 496);
+            this.btnUpdate.Location = new System.Drawing.Point(1092, 641);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(250, 40);
@@ -202,26 +201,14 @@ namespace MilkTeaManagement
             this.btnEditInfo.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnEditInfo.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnEditInfo.ForeColor = System.Drawing.Color.White;
-            this.btnEditInfo.Location = new System.Drawing.Point(1092, 640);
+            this.btnEditInfo.Location = new System.Drawing.Point(1418, 569);
             this.btnEditInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEditInfo.Name = "btnEditInfo";
             this.btnEditInfo.Size = new System.Drawing.Size(250, 40);
             this.btnEditInfo.TabIndex = 27;
-            this.btnEditInfo.Text = "Edit Employee Info";
+            this.btnEditInfo.Text = "Edit Info";
             this.btnEditInfo.UseVisualStyleBackColor = false;
-            // 
-            // btnEditManager
-            // 
-            this.btnEditManager.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnEditManager.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnEditManager.ForeColor = System.Drawing.Color.White;
-            this.btnEditManager.Location = new System.Drawing.Point(1418, 640);
-            this.btnEditManager.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnEditManager.Name = "btnEditManager";
-            this.btnEditManager.Size = new System.Drawing.Size(250, 40);
-            this.btnEditManager.TabIndex = 28;
-            this.btnEditManager.Text = "Edit Manager Info";
-            this.btnEditManager.UseVisualStyleBackColor = false;
+            this.btnEditInfo.Click += new System.EventHandler(this.btnEditInfo_Click);
             // 
             // AdminEmployee
             // 
@@ -229,7 +216,6 @@ namespace MilkTeaManagement
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1680, 1015);
-            this.Controls.Add(this.btnEditManager);
             this.Controls.Add(this.btnEditInfo);
             this.Controls.Add(this.cboRoleId);
             this.Controls.Add(this.txtUserId);
@@ -271,6 +257,5 @@ namespace MilkTeaManagement
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnEditInfo;
-        private System.Windows.Forms.Button btnEditManager;
     }
 }

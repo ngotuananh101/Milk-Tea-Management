@@ -37,7 +37,7 @@ namespace MilkTeaManagement.Business
                     {
                         accounts.Add(new Account
                         {
-                            userId = reader.GetString("UserId"),
+                            userId = reader.GetInt32("UserId").ToString(),
                             userName = reader.GetString("Username"),
                             passWord = reader.GetString("Password"),
                             roleId = reader.GetInt32("RoleId")
@@ -71,7 +71,7 @@ namespace MilkTeaManagement.Business
                     while (reader.Read())
                     {
                         // Doc tung record vao categories
-                        categories.Add(new Account { userName = reader.GetString("Username"), passWord = reader.GetString("Password"), roleId = reader.GetInt32("RoleId"), userId = reader.GetString("UserId") });
+                        categories.Add(new Account { userName = reader.GetString("Username"), passWord = reader.GetString("Password"), roleId = reader.GetInt32("RoleId"), userId = reader.GetInt32("UserId").ToString() });
                     }
                 }
             }
@@ -90,11 +90,11 @@ namespace MilkTeaManagement.Business
         public void InsertAccount(Account account)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Insert into Account(Username, Password, RoleId, UserId) values(@Username, @Password, @RoleId, @UserId)", connection);
+            command = new SqlCommand("Insert into Account(Username, Password, RoleId) values(@Username, @Password, @RoleId)", connection);
             command.Parameters.AddWithValue("@Username", account.userName);
             command.Parameters.AddWithValue("@Password", account.passWord);
             command.Parameters.AddWithValue("@RoleId", account.roleId);
-            command.Parameters.AddWithValue("@UserId", account.userId);
+            // command.Parameters.AddWithValue("@UserId", account.userId);
 
             try
             {

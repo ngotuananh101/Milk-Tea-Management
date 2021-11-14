@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using MilkTeaDemo;
 using MilkTeaManagement.Business;
 
 namespace MilkTeaManagement
@@ -110,7 +111,6 @@ namespace MilkTeaManagement
                 strResult += "Username: " + txtUsername.Text.Trim() + "\n";
                 strResult += "Password: " + txtPassword.Text.Trim() + "\n";
                 strResult += "RoleId: " + cboRoleId.Text.Trim() + "\n";
-                strResult += "UserId: " + txtUserId.Text.Trim();
 
                 MessageBox.Show(strResult);
             }
@@ -159,17 +159,20 @@ namespace MilkTeaManagement
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
 
-            if (cboRoleId.SelectedIndex == 0)
-            {
-                btnEditManager.Visible = true;
-                btnEditInfo.Visible = false;
-            }else if (cboRoleId.SelectedIndex == 1)
-            {
-                btnEditManager.Visible = false;
-                btnEditInfo.Visible = true;
-            }
-            
             // MessageBox.Show(cboRoleId.SelectedIndex.ToString(), cboRoleId.SelectedText);
+        }
+
+        private void btnEditInfo_Click(object sender, EventArgs e)
+        {
+            Account acc = new Account
+            {
+                userName = txtUsername.Text,
+                passWord = txtPassword.Text,
+                roleId = cboRoleId.SelectedIndex + 1,
+                userId = txtUserId.Text
+            };
+            EmployeeDetail employeeDetail = new EmployeeDetail(acc);
+            employeeDetail.ShowDialog();
         }
     }
 }
