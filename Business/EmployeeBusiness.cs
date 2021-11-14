@@ -95,8 +95,7 @@ namespace MilkTeaManagement.Business
         public void InsertEmployee(Employee employee)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Insert into Employee(EmployeeId, EmployeeName, EmployeeDob, EmployeeEmail, Phone, Address, Gender, ManagerId) values(@EmployeeId, @EmployeeName, @EmployeeDob, @EmployeeEmail, @Phone, @Address, @Gender, @ManagerId)", connection);
-            command.Parameters.AddWithValue("@EmployeeId", employee.employeeId);
+            command = new SqlCommand("Insert into Employee(EmployeeName, EmployeeDob, EmployeeEmail, Phone, Address, Gender, ManagerId, UserId) values(@EmployeeName, @EmployeeDob, @EmployeeEmail, @Phone, @Address, @Gender, @ManagerId, @UserId)", connection);
             command.Parameters.AddWithValue("@EmployeeName", employee.employeeName);
             command.Parameters.AddWithValue("@EmployeeDob", employee.employeeDob);
             command.Parameters.AddWithValue("@EmployeeEmail", employee.employeeEmail);
@@ -104,7 +103,37 @@ namespace MilkTeaManagement.Business
             command.Parameters.AddWithValue("@Gender", employee.gender);
             command.Parameters.AddWithValue("@Address", employee.address);
             command.Parameters.AddWithValue("@ManagerId", employee.managerId);
+            command.Parameters.AddWithValue("@UserId", employee.userId);
 
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public void UpdateEmployee(Employee employee)
+        {
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("UPDATE [dbo].[Employee] SET [EmployeeName] = @EmployeeName,[EmployeeDob] = @EmployeeDob,[EmployeeEmail] = @EmployeeEmail,[Phone] = @Phone,[Address] = @Address ,[Gender] = @Gender,[ManagerId] = @ManagerId ,[UserId] = @UserId WHERE [EmployeeId] = @EmployeeId", connection);
+            command.Parameters.AddWithValue("@EmployeeId", Int32.Parse(employee.employeeId));
+            command.Parameters.AddWithValue("@EmployeeName", employee.employeeName);
+            command.Parameters.AddWithValue("@EmployeeDob", employee.employeeDob);
+            command.Parameters.AddWithValue("@EmployeeEmail", employee.employeeEmail);
+            command.Parameters.AddWithValue("@Phone", employee.phone);
+            command.Parameters.AddWithValue("@Gender", employee.gender);
+            command.Parameters.AddWithValue("@Address", employee.address);
+            command.Parameters.AddWithValue("@ManagerId", Int32.Parse(employee.managerId));
+            command.Parameters.AddWithValue("@UserId", Int32.Parse(employee.userId));
 
             try
             {

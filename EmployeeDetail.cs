@@ -64,14 +64,30 @@ namespace MilkTeaDemo
                 }
                 else if(account.roleId == 2)
                 {
+                    EmployeeBusiness eb = new EmployeeBusiness();
+                    Employee employee = new Employee
+                    {
+                        employeeId = txtID.Text,
+                        employeeName = txtName.Text,
+                        employeeDob = txtDob.Text,
+                        employeeEmail = txtEmail.Text,
+                        phone = txtPhone.Text,
+                        address = txtAddress.Text,
+                        gender = rbMale.Checked,
+                        managerId = cboManId.SelectedValue.ToString(),
+                        userId = account.userId
+                    };
                     if (addOrEdit == 1)
                     {
                         // add new employee info
+                        
+                        eb.InsertEmployee(employee); 
 
                     }
                     else if (addOrEdit == 2)
                     {
                         // edit employee info
+                        eb.UpdateEmployee(employee);
                     }
                 }
             }
@@ -168,14 +184,14 @@ namespace MilkTeaDemo
             bool flag = true;
 
             string strError = "";
-
-            Regex regEmpDob = new Regex(@"^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$");
-            if (!regEmpDob.IsMatch(txtDob.Text.Trim()))
-            {
-                flag = false;
-                strError += "Invalid Date of birth!\n";
-                txtDob.Focus();
-            }
+            //
+            // Regex regEmpDob = new Regex(@"^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$");
+            // if (!regEmpDob.IsMatch(txtDob.Text.Trim()))
+            // {
+            //     flag = false;
+            //     strError += "Invalid Date of birth!\n";
+            //     txtDob.Focus();
+            // }
 
             Regex regEmpEmail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             if (!regEmpEmail.IsMatch(txtEmail.Text.Trim()))
@@ -186,15 +202,15 @@ namespace MilkTeaDemo
             }
 
            
-
-            Regex regAddress = new Regex(@"^[0-9a-zA-Z\s]+$");
-            if (!regAddress.IsMatch(txtAddress.Text.Trim()))
-            {
-                flag = false;
-                strError += "Invalid Address!\n";
-                txtAddress.Focus();
-
-            }
+            //
+            // Regex regAddress = new Regex(@"^[0-9a-zA-Z\s]+$");
+            // if (!regAddress.IsMatch(txtAddress.Text.Trim()))
+            // {
+            //     flag = false;
+            //     strError += "Invalid Address!\n";
+            //     txtAddress.Focus();
+            //
+            // }
 
            
 

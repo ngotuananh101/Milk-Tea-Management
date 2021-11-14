@@ -142,6 +142,7 @@ namespace MilkTeaDemo
             this.txtID.Location = new System.Drawing.Point(208, 40);
             this.txtID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(218, 29);
             this.txtID.TabIndex = 8;
             // 
