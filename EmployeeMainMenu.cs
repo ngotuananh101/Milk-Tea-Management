@@ -194,21 +194,26 @@ namespace MilkTeaManagement
                 });
                 Order order = orders.Get1Orders();
                 OrdersDetailBusiness ordersDetailBusiness = new OrdersDetailBusiness();
+                int check = 0;
                 foreach (UserControl1 uc in ProductControls)
                 {
-                    if (uc.ProductID != ""&& uc.Quantity!=0) 
-                    { 
-                         ordersDetailBusiness.InsertOrderDetail(new OrdersDetail
+                    if (uc.ProductID != "" && uc.Quantity != 0)
+                    {
+                        ordersDetailBusiness.InsertOrderDetail(new OrdersDetail
                         {
-                        orderId = order.orderId,
-                        price = uc.ProductPrice,
-                        quantity = uc.Quantity,
-                        productName = uc.ProductID
+                            orderId = order.orderId,
+                            price = uc.ProductPrice,
+                            quantity = uc.Quantity,
+                            productName = uc.ProductID
                         });
-                        MessageBox.Show("Insert Successful");
                     }
-                    else { MessageBox.Show("No Product in Checkout, cant insert"); }
+                    else
+                    {
+                        check = 1;
+                    }
                 }
+
+                MessageBox.Show("Add successfully!!");
             }
 
         }

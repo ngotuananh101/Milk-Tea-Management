@@ -143,7 +143,16 @@ namespace MilkTeaManagement
         private void btnDelete_Click(object sender, EventArgs e)
         {
             var account = new Account { userName = txtUsername.Text, passWord = txtPassword.Text, roleId = Convert.ToInt32(cboRoleId.Text), userId = txtUserId.Text };
+            if (account.roleId == 1)
+            {
+                // delete manager info
+                new ManagerBusiness().DeleteManager(Int32.Parse(account.userId));
 
+            }else if (account.roleId == 2)
+            {
+                // delete employee account
+                new EmployeeBusiness().DeletEmployee(Int32.Parse(account.userId));
+            }
             catList.DeleteAccount(account);
             LoadAccount();
         }

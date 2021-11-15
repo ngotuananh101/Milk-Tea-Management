@@ -130,6 +130,28 @@ namespace MilkTeaManagement.Business
             }
         }
 
+        public void DeleteManager(int UserId)
+        {
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("DELETE FROM [dbo].[Manager] WHERE [UserId] = @UserId ", connection);
+            command.Parameters.AddWithValue("@UserId", UserId);
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
         public bool GetGenderById(string managerid)
         {
             Boolean gender = true;

@@ -62,6 +62,7 @@ namespace MilkTeaManagement
             this.txtUserId.Location = new System.Drawing.Point(1091, 411);
             this.txtUserId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUserId.Name = "txtUserId";
+            this.txtUserId.ReadOnly = true;
             this.txtUserId.Size = new System.Drawing.Size(577, 35);
             this.txtUserId.TabIndex = 25;
             // 

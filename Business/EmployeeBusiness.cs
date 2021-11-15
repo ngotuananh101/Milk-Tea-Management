@@ -63,6 +63,27 @@ namespace MilkTeaManagement.Business
             return employees;
         }
 
+        public void DeletEmployee(int UserId)
+        {
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("DELETE FROM [dbo].[Employee] WHERE [UserId] = @UserId ", connection);
+            command.Parameters.AddWithValue("@UserId", UserId);
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
         public string GetManagerId(string employeeid)
         {
             String managerId = "";
