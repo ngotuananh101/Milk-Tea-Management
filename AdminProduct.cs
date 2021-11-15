@@ -184,7 +184,7 @@ namespace MilkTeaManagement
         public void Insert(string ProductId, string ProductName, int Price, String Origin, int CategoryId, string image)
         {
             con.Open();
-            using (SqlCommand command = new SqlCommand("Insert into Product(ProductId, ProductName, Price, Origin, CategoryId, Image) values(@ProductId, @ProductName, @Price, @Origin, @CategoryId, @image)", con))
+            using (SqlCommand command = new SqlCommand("Insert into Product(ProductId, ProductName, Price, Origin, CategoryId, Image,Quantity) values(@ProductId, @ProductName, @Price, @Origin, @CategoryId, @image, 10)", con))
             {
                 command.CommandType = CommandType.Text;
                 command.Parameters.AddWithValue("@ProductId", ProductId);
@@ -217,10 +217,12 @@ namespace MilkTeaManagement
         {
             var product = new Product
             {
+                ProductId = txtProductId.Text,
                 ProductName = txtProductName.Text,
-                Price = Convert.ToInt32(txtPrice.Text),
+                Price = Convert.ToDecimal(txtPrice.Text),
                 Origin = txtOrigin.Text,
-                CategoryId = Convert.ToInt32(comboBox1.Text)
+                CategoryId = Convert.ToInt32(comboBox1.Text),
+                Image = txtPicture.Text
 
             };
             catList.DeleteProduct(product);
@@ -229,8 +231,11 @@ namespace MilkTeaManagement
 
         private void txtPicture_TextChanged(object sender, EventArgs e)
         {
-            Image img = Image.FromFile(txtPicture.Text);
-            pictureBox1.Image = img;
+            if (txtPicture.Text != String.Empty)
+            {
+                Image img = Image.FromFile(txtPicture.Text);
+                pictureBox1.Image = img;
+            }
         }
     }
 }
