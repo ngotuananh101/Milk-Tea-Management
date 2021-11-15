@@ -30,14 +30,14 @@ namespace MilkTeaManagement
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -52,6 +52,17 @@ namespace MilkTeaManagement
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 100);
             this.panel1.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(16, 58);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 32);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "label4";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label1
             // 
@@ -74,6 +85,16 @@ namespace MilkTeaManagement
             this.panel2.Size = new System.Drawing.Size(200, 100);
             this.panel2.TabIndex = 1;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(16, 58);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(83, 32);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "label5";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -95,6 +116,16 @@ namespace MilkTeaManagement
             this.panel3.Size = new System.Drawing.Size(200, 100);
             this.panel3.TabIndex = 1;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(16, 58);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(83, 32);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "label6";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -105,36 +136,6 @@ namespace MilkTeaManagement
             this.label3.Size = new System.Drawing.Size(146, 25);
             this.label3.TabIndex = 0;
             this.label3.Text = "Total Employee";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(16, 58);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 32);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "label4";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(16, 58);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 32);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "label5";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(16, 58);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 32);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "label6";
             // 
             // AdminHome
             // 

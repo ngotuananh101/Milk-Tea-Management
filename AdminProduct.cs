@@ -201,11 +201,14 @@ namespace MilkTeaManagement
         {
             var product = new Product
             {
+                ProductId = txtProductId.Text,
                 ProductName = txtProductName.Text,
-                Price = Convert.ToInt32(txtPrice.Text),
+                Price = Convert.ToDecimal(txtPrice.Text),
                 Origin = txtOrigin.Text,
-                CategoryId = Convert.ToInt32(comboBox1.Text)
+                CategoryId = Convert.ToInt32(comboBox1.Text),
+                Image = txtPicture.Text
             };
+            MessageBox.Show(product.Image);
             catList.UpdateProduct(product);
             LoadProduct();
         }

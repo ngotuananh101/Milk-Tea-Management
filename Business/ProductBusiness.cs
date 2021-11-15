@@ -76,11 +76,13 @@ namespace MenuCRUD
         public void UpdateProduct(Product product)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Update Product set  ProductName ='" + product.ProductName + "', " +
-                "Price = '" + product.Price + "'," +
-                " Origin = '" + product.Origin + "', CategoryId = '" + product.CategoryId + "'" +
-                " where ProductId = '" + product.ProductId + "'", connection);
-
+            command = new SqlCommand("UPDATE [dbo].[Product] SET [ProductName] = @ProductName, [Quantity] = 10, [Price] = @Price, [Origin] = @Origin, [CategoryId] = @CategoryId, [Image] = @Image WHERE [ProductId] = @ProductId", connection);
+            command.Parameters.AddWithValue("@ProductName", product.ProductName);
+            command.Parameters.AddWithValue("@Price", product.Price);
+            command.Parameters.AddWithValue("@Origin", product.Origin);
+            command.Parameters.AddWithValue("@CategoryId", product.CategoryId);
+            command.Parameters.AddWithValue("@Image", product.Image);
+            command.Parameters.AddWithValue("@ProductId", product.ProductId);
 
             try
             {
