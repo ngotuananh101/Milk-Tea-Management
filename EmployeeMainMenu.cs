@@ -142,7 +142,7 @@ namespace MilkTeaManagement
             cbColumn.Name = "cbColumn";
             dataGridView1.Columns.Add(cbColumn);
             //cot image
-            DataGridViewImageColumn dgvi = new DataGridViewImageColumn();
+            
 
             //cot comboCategory
             comboCategory.DataSource = new CategoryBusiness().GetCategories();
@@ -154,19 +154,8 @@ namespace MilkTeaManagement
 
 
 
-            DataGridViewImageColumn img = new DataGridViewImageColumn();
-            img.HeaderText = "Preview";
-            img.Name = "img";
-            img.ImageLayout = DataGridViewImageCellLayout.Normal;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                string zz = dataGridView1.Rows[i].Cells[6].Value.ToString();
-                Image image2 = resizeImage(Image.FromFile(zz),new Size(100,100));
-                img.Image = image2;
-            }
 
-
-            dataGridView1.Columns.Add(img);
+            
             this.dataGridView1.Columns["Productid"].Visible = false;
             this.dataGridView1.Columns["Categoryid"].Visible = false;
             this.dataGridView1.Columns["Image"].Visible = false;
@@ -207,14 +196,18 @@ namespace MilkTeaManagement
                 OrdersDetailBusiness ordersDetailBusiness = new OrdersDetailBusiness();
                 foreach (UserControl1 uc in ProductControls)
                 {
-                    if (uc.ProductID != "") { 
-                    ordersDetailBusiness.InsertOrderDetail(new OrdersDetail
-                    {
+                    if (uc.ProductID != ""&& uc.Quantity!=0) 
+                    { 
+                         ordersDetailBusiness.InsertOrderDetail(new OrdersDetail
+                        {
                         orderId = order.orderId,
                         price = uc.ProductPrice,
                         quantity = uc.Quantity,
                         productName = uc.ProductID
-                    });}
+                        });
+                        MessageBox.Show("Insert Successful");
+                    }
+                    else { MessageBox.Show("No Product in Checkout, cant insert"); }
                 }
             }
 
