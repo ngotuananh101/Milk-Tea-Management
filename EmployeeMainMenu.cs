@@ -27,7 +27,7 @@ namespace MilkTeaManagement
         {
             InitializeComponent();
             accountt = account;
-            txtUsername.Text = "Wellcome " + account.userName + " !";
+            txtUsername.Text = "Welcome " + account.userName + " !";
             timer1.Start();
         }
 
@@ -87,7 +87,10 @@ namespace MilkTeaManagement
             richTextBox1.AppendText("\n" + string.Format("{0,-30}{1,-30}{2,-20}{3,-30}", "Product", "Quantity", "Price","Sum"));
             foreach (UserControl1 uc in ProductControls)
             {
+                if (uc.Quantity >= 1) { 
                 richTextBox1.AppendText("\n" + string.Format("{0,-40}{1,-30}{2,-16}{3,-30}", uc.ProductName, uc.Quantity, uc.ProductPrice + "đ", (uc.ProductPrice*uc.Quantity) + "đ"));
+            
+                }
             }
             richTextBox1.AppendText("\n------------------------------------------------------------------------------------");
             richTextBox1.AppendText("\n"+string.Format("{0,-95}{1,-10}","Total: ", CalculateFreight().ToString()+"đ"));
@@ -126,23 +129,31 @@ namespace MilkTeaManagement
 
 
             }
+            //khong co thi de giu nguyen
             Product_DataChange(null, null);
         }
 
         SqlConnection con = new SqlConnection(new AccountBusiness().GetConnectionString());
         private void EmployeeMainMenu_Load(object sender, EventArgs e)
         {
+            //1 cai check de tim
             DataGridViewCheckBoxColumn cbColumn = new DataGridViewCheckBoxColumn();
             cbColumn.HeaderText = "Check";
             cbColumn.Name = "cbColumn";
             dataGridView1.Columns.Add(cbColumn);
+            //cot image
             DataGridViewImageColumn dgvi = new DataGridViewImageColumn();
+
+            //cot comboCategory
             comboCategory.DataSource = new CategoryBusiness().GetCategories();
             comboCategory.ValueMember = "CategoryName";
             comboCategory.SelectedItem = null;
             comboCategory.SelectedText = "--select--";
             List<Product> products = proList.GetProducts();
             dataGridView1.DataSource = products;
+
+
+
             DataGridViewImageColumn img = new DataGridViewImageColumn();
             img.HeaderText = "Preview";
             img.Name = "img";
@@ -153,10 +164,13 @@ namespace MilkTeaManagement
                 Image image2 = resizeImage(Image.FromFile(zz),new Size(100,100));
                 img.Image = image2;
             }
+
+
             dataGridView1.Columns.Add(img);
-            this.dataGridView1.Columns["productid"].Visible = false;
-            this.dataGridView1.Columns["categoryid"].Visible = false;
-            this.dataGridView1.Columns["image"].Visible = false;
+            this.dataGridView1.Columns["Productid"].Visible = false;
+            this.dataGridView1.Columns["Categoryid"].Visible = false;
+            this.dataGridView1.Columns["Image"].Visible = false;
+
             foreach (DataGridViewRow x in dataGridView1.Rows)
             {
                 x.MinimumHeight = 100;
@@ -175,31 +189,35 @@ namespace MilkTeaManagement
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        { 
             printPreviewDialog1.Document = printDocument1;
 
             printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprmm", 230, 600);
 
             printPreviewDialog1.ShowDialog();
             OrdersBusiness orders = new OrdersBusiness();
-            orders.InsertOrder(new Order
-            {
-                employeeId = accountt.userId,
-                total = CalculateFreight(),
-                date = DateTime.Now
-            });
-            Order order = orders.Get1Orders();
-            OrdersDetailBusiness ordersDetailBusiness = new OrdersDetailBusiness();
-            foreach (UserControl1 uc in ProductControls)
-            {
-                ordersDetailBusiness.InsertOrderDetail(new OrdersDetail
+            if (CalculateFreight() != 0) { 
+                orders.InsertOrder(new Order
                 {
-                    orderId = order.orderId,
-                    price = uc.ProductPrice,
-                    quantity = uc.Quantity,
-                    productName = uc.ProductID
+                    employeeId = accountt.userId,
+                    total = CalculateFreight(),
+                    date = DateTime.Now
                 });
+                Order order = orders.Get1Orders();
+                OrdersDetailBusiness ordersDetailBusiness = new OrdersDetailBusiness();
+                foreach (UserControl1 uc in ProductControls)
+                {
+                    if (uc.ProductID != "") { 
+                    ordersDetailBusiness.InsertOrderDetail(new OrdersDetail
+                    {
+                        orderId = order.orderId,
+                        price = uc.ProductPrice,
+                        quantity = uc.Quantity,
+                        productName = uc.ProductID
+                    });}
+                }
             }
+
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
@@ -214,14 +232,6 @@ namespace MilkTeaManagement
             // e.Graphics.DrawString("------------------------------------------------------------------------------------", new Font("Arial", 5, FontStyle.Regular), Brushes.Black, 10, 100);
             // e.Graphics.DrawString(string.Format("{0,-75}{1,-10}", "Total: ", CalculateFreight().ToString()), new Font("Arial", 5, FontStyle.Bold), Brushes.Black, 10, 540);
             // e.Graphics.DrawString("Thank you ! See you later !!", new Font("Arial", 5, FontStyle.Bold), Brushes.Black, 10, 90);
-        }
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Login login = new Login();
-            login.ShowDialog();
-            this.Close();
         }
     }
 }
