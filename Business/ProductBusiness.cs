@@ -14,7 +14,7 @@ namespace MenuCRUD
     {
         public string ProductId { get; set; }
         public string ProductName { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
         public string Origin { get; set; }
         public int CategoryId { get; set; }
         public string Image { get; set; }
@@ -53,7 +53,7 @@ namespace MenuCRUD
                         {
                             ProductId = reader.GetString("ProductId"),
                             ProductName = reader.GetString("ProductName"),
-                            Price = reader.GetInt32("Price"),
+                            Price = reader.GetDecimal("Price"),
                             Origin = reader.GetString("Origin"),
                             CategoryId = reader.GetInt32("CategoryId"),
                             Image = reader.GetString("Image")
@@ -137,7 +137,8 @@ namespace MenuCRUD
                         {
                             ProductId = reader.GetString("ProductId"),
                             ProductName = reader.GetString("ProductName"),
-                            Price = reader.GetInt32("Price"),
+                            Price = reader.GetDecimal("Price"),
+                            Origin = reader.GetString("Origin"),
                             CategoryId = reader.GetInt32
                                 ("CategoryId"),
                             Image = reader.GetString("Image")

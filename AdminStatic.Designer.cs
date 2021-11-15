@@ -31,7 +31,6 @@ namespace MilkTeaManagement
         {
             this.dgvOrder = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnDiscount = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -83,8 +82,6 @@ namespace MilkTeaManagement
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
-            this.btnChart = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).BeginInit();
@@ -112,21 +109,10 @@ namespace MilkTeaManagement
             this.label1.TabIndex = 1;
             this.label1.Text = "Sales and Revenue";
             // 
-            // btnDiscount
-            // 
-            this.btnDiscount.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnDiscount.Location = new System.Drawing.Point(453, 881);
-            this.btnDiscount.Name = "btnDiscount";
-            this.btnDiscount.Size = new System.Drawing.Size(156, 35);
-            this.btnDiscount.TabIndex = 2;
-            this.btnDiscount.Text = "Discount";
-            this.btnDiscount.UseVisualStyleBackColor = true;
-            this.btnDiscount.Click += new System.EventHandler(this.btnDiscount_Click);
-            // 
             // btnExport
             // 
             this.btnExport.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnExport.Location = new System.Drawing.Point(630, 881);
+            this.btnExport.Location = new System.Drawing.Point(630, 968);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(182, 35);
             this.btnExport.TabIndex = 3;
@@ -170,6 +156,7 @@ namespace MilkTeaManagement
             this.cbbEmployeeId.Name = "cbbEmployeeId";
             this.cbbEmployeeId.Size = new System.Drawing.Size(262, 33);
             this.cbbEmployeeId.TabIndex = 9;
+            this.cbbEmployeeId.SelectedIndexChanged += new System.EventHandler(this.cbbEmployeeId_SelectedIndexChanged);
             // 
             // txtSearch
             // 
@@ -197,6 +184,7 @@ namespace MilkTeaManagement
             this.dpTo.Name = "dpTo";
             this.dpTo.Size = new System.Drawing.Size(313, 33);
             this.dpTo.TabIndex = 6;
+            this.dpTo.ValueChanged += new System.EventHandler(this.dpTo_ValueChanged);
             // 
             // dpFrom
             // 
@@ -205,6 +193,7 @@ namespace MilkTeaManagement
             this.dpFrom.Name = "dpFrom";
             this.dpFrom.Size = new System.Drawing.Size(309, 33);
             this.dpFrom.TabIndex = 5;
+            this.dpFrom.ValueChanged += new System.EventHandler(this.dpFrom_ValueChanged);
             // 
             // label3
             // 
@@ -268,7 +257,7 @@ namespace MilkTeaManagement
             this.rdbFemale1.AutoSize = true;
             this.rdbFemale1.Enabled = false;
             this.rdbFemale1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rdbFemale1.Location = new System.Drawing.Point(237, 299);
+            this.rdbFemale1.Location = new System.Drawing.Point(211, 299);
             this.rdbFemale1.Name = "rdbFemale1";
             this.rdbFemale1.Size = new System.Drawing.Size(78, 25);
             this.rdbFemale1.TabIndex = 19;
@@ -293,7 +282,7 @@ namespace MilkTeaManagement
             // 
             this.txtEUserId.Enabled = false;
             this.txtEUserId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtEUserId.Location = new System.Drawing.Point(143, 343);
+            this.txtEUserId.Location = new System.Drawing.Point(143, 339);
             this.txtEUserId.Name = "txtEUserId";
             this.txtEUserId.Size = new System.Drawing.Size(245, 29);
             this.txtEUserId.TabIndex = 17;
@@ -356,7 +345,7 @@ namespace MilkTeaManagement
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(7, 346);
+            this.label14.Location = new System.Drawing.Point(6, 347);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(64, 21);
             this.label14.TabIndex = 9;
@@ -483,7 +472,7 @@ namespace MilkTeaManagement
             this.rdbFemale2.AutoSize = true;
             this.rdbFemale2.Enabled = false;
             this.rdbFemale2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rdbFemale2.Location = new System.Drawing.Point(254, 319);
+            this.rdbFemale2.Location = new System.Drawing.Point(209, 299);
             this.rdbFemale2.Name = "rdbFemale2";
             this.rdbFemale2.Size = new System.Drawing.Size(78, 25);
             this.rdbFemale2.TabIndex = 19;
@@ -496,7 +485,7 @@ namespace MilkTeaManagement
             this.rdbMale2.AutoSize = true;
             this.rdbMale2.Enabled = false;
             this.rdbMale2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rdbMale2.Location = new System.Drawing.Point(141, 319);
+            this.rdbMale2.Location = new System.Drawing.Point(141, 299);
             this.rdbMale2.Name = "rdbMale2";
             this.rdbMale2.Size = new System.Drawing.Size(62, 25);
             this.rdbMale2.TabIndex = 18;
@@ -508,7 +497,7 @@ namespace MilkTeaManagement
             // 
             this.txtMUserId.Enabled = false;
             this.txtMUserId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtMUserId.Location = new System.Drawing.Point(141, 363);
+            this.txtMUserId.Location = new System.Drawing.Point(141, 339);
             this.txtMUserId.Name = "txtMUserId";
             this.txtMUserId.Size = new System.Drawing.Size(253, 29);
             this.txtMUserId.TabIndex = 17;
@@ -517,17 +506,16 @@ namespace MilkTeaManagement
             // 
             this.txtMAddress.Enabled = false;
             this.txtMAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtMAddress.Location = new System.Drawing.Point(141, 268);
+            this.txtMAddress.Location = new System.Drawing.Point(141, 249);
             this.txtMAddress.Name = "txtMAddress";
             this.txtMAddress.Size = new System.Drawing.Size(253, 29);
             this.txtMAddress.TabIndex = 16;
-            this.txtMAddress.TextChanged += new System.EventHandler(this.txtMAddress_TextChanged);
             // 
             // txtMPhone
             // 
             this.txtMPhone.Enabled = false;
             this.txtMPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtMPhone.Location = new System.Drawing.Point(141, 224);
+            this.txtMPhone.Location = new System.Drawing.Point(141, 204);
             this.txtMPhone.Name = "txtMPhone";
             this.txtMPhone.Size = new System.Drawing.Size(253, 29);
             this.txtMPhone.TabIndex = 15;
@@ -536,7 +524,7 @@ namespace MilkTeaManagement
             // 
             this.txtMEmail.Enabled = false;
             this.txtMEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtMEmail.Location = new System.Drawing.Point(141, 178);
+            this.txtMEmail.Location = new System.Drawing.Point(141, 158);
             this.txtMEmail.Name = "txtMEmail";
             this.txtMEmail.Size = new System.Drawing.Size(253, 29);
             this.txtMEmail.TabIndex = 13;
@@ -545,7 +533,7 @@ namespace MilkTeaManagement
             // 
             this.txtMDob.Enabled = false;
             this.txtMDob.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtMDob.Location = new System.Drawing.Point(141, 133);
+            this.txtMDob.Location = new System.Drawing.Point(141, 113);
             this.txtMDob.Name = "txtMDob";
             this.txtMDob.Size = new System.Drawing.Size(253, 29);
             this.txtMDob.TabIndex = 12;
@@ -554,7 +542,7 @@ namespace MilkTeaManagement
             // 
             this.txtMName.Enabled = false;
             this.txtMName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtMName.Location = new System.Drawing.Point(141, 84);
+            this.txtMName.Location = new System.Drawing.Point(141, 72);
             this.txtMName.Name = "txtMName";
             this.txtMName.Size = new System.Drawing.Size(253, 29);
             this.txtMName.TabIndex = 11;
@@ -563,7 +551,7 @@ namespace MilkTeaManagement
             // 
             this.txtMId.Enabled = false;
             this.txtMId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtMId.Location = new System.Drawing.Point(141, 45);
+            this.txtMId.Location = new System.Drawing.Point(141, 28);
             this.txtMId.Name = "txtMId";
             this.txtMId.Size = new System.Drawing.Size(253, 29);
             this.txtMId.TabIndex = 10;
@@ -572,7 +560,7 @@ namespace MilkTeaManagement
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(8, 366);
+            this.label16.Location = new System.Drawing.Point(10, 342);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(64, 21);
             this.label16.TabIndex = 9;
@@ -582,7 +570,7 @@ namespace MilkTeaManagement
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(10, 272);
+            this.label17.Location = new System.Drawing.Point(10, 251);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(69, 21);
             this.label17.TabIndex = 8;
@@ -592,7 +580,7 @@ namespace MilkTeaManagement
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(10, 321);
+            this.label18.Location = new System.Drawing.Point(8, 303);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(64, 21);
             this.label18.TabIndex = 7;
@@ -610,7 +598,7 @@ namespace MilkTeaManagement
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(10, 224);
+            this.label20.Location = new System.Drawing.Point(10, 204);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(57, 21);
             this.label20.TabIndex = 5;
@@ -620,7 +608,7 @@ namespace MilkTeaManagement
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label22.Location = new System.Drawing.Point(10, 181);
+            this.label22.Location = new System.Drawing.Point(10, 158);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(51, 21);
             this.label22.TabIndex = 3;
@@ -630,7 +618,7 @@ namespace MilkTeaManagement
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label23.Location = new System.Drawing.Point(10, 136);
+            this.label23.Location = new System.Drawing.Point(10, 116);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(100, 21);
             this.label23.TabIndex = 2;
@@ -640,7 +628,7 @@ namespace MilkTeaManagement
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label24.Location = new System.Drawing.Point(10, 92);
+            this.label24.Location = new System.Drawing.Point(10, 72);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(125, 21);
             this.label24.TabIndex = 1;
@@ -650,7 +638,7 @@ namespace MilkTeaManagement
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label25.Location = new System.Drawing.Point(8, 45);
+            this.label25.Location = new System.Drawing.Point(10, 28);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(98, 21);
             this.label25.TabIndex = 0;
@@ -662,39 +650,15 @@ namespace MilkTeaManagement
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTotal.Location = new System.Drawing.Point(7, 886);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(271, 25);
+            this.lblTotal.Size = new System.Drawing.Size(219, 25);
             this.lblTotal.TabIndex = 21;
-            this.lblTotal.Text = "Total Revenue (Selected Bill) :";
-            // 
-            // btnChart
-            // 
-            this.btnChart.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnChart.Location = new System.Drawing.Point(453, 944);
-            this.btnChart.Name = "btnChart";
-            this.btnChart.Size = new System.Drawing.Size(156, 35);
-            this.btnChart.TabIndex = 22;
-            this.btnChart.Text = "Revenue\'s Chart";
-            this.btnChart.UseVisualStyleBackColor = true;
-            this.btnChart.Click += new System.EventHandler(this.btnSalary_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(7, 949);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(146, 25);
-            this.label9.TabIndex = 23;
-            this.label9.Text = "Total Revenue :";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
+            this.lblTotal.Text = "Total Revenue By Date :";
             // 
             // AdminStatic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1680, 1015);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.btnChart);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label15);
@@ -702,7 +666,6 @@ namespace MilkTeaManagement
             this.Controls.Add(this.dgvOrderDetails);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnExport);
-            this.Controls.Add(this.btnDiscount);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvOrder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -726,7 +689,6 @@ namespace MilkTeaManagement
 
         private System.Windows.Forms.DataGridView dgvOrder;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnDiscount;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
@@ -776,8 +738,6 @@ namespace MilkTeaManagement
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label lblTotal;
-        private System.Windows.Forms.Button btnChart;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox cbbEmployeeId;
     }

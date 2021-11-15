@@ -39,14 +39,14 @@ namespace MilkTeaManagement.Business
                     {
                         employees.Add(new Employee
                         {
-                            employeeId = reader.GetInt32("EmployeeId").ToString(),
+                            employeeId = reader.GetString("EmployeeId"),
                             employeeName = reader.GetString("EmployeeName"),
                             employeeDob = reader.GetString("EmployeeDob"),
                             employeeEmail = reader.GetString("EmployeeEmail"),
                             phone = reader.GetString("Phone"),
                             address = reader.GetString("Address"),
                             gender = reader.GetBoolean("Gender"),
-                            userId = reader.GetInt32("UserId").ToString()
+                            userId = reader.GetString("UserId")
                         });
                     }
                 }
@@ -76,7 +76,7 @@ namespace MilkTeaManagement.Business
                 {
                     while (reader.Read())
                     {
-                        managerId = reader.GetInt32("ManagerId").ToString();
+                        managerId = reader.GetString("ManagerId");
                     }
                 }
             }
@@ -121,6 +121,73 @@ namespace MilkTeaManagement.Business
             }
         }
 
+        public List<Employee> GetEmployeesId()
+        {
+            List<Employee> employees = new List<Employee>();
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select EmployeeId from Employee", connection);
+            employees.Add(new Employee
+            {
+                employeeId = "--- All ---"
+            });
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows == true)
+                {
+                    while (reader.Read())
+                    {
+                        employees.Add(new Employee
+                        {
+                            employeeId = reader.GetString("EmployeeId"),
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return employees;
+        }
+
+        public string GetEmployeesIdByUserId(string userid)
+        {
+            String employees = "";
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select EmployeeId from Employee where UserId = '" + userid + "'", connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows == true)
+                {
+                    while (reader.Read())
+                    {
+
+                        employees = reader.GetString("EmployeeId");
+                        
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return employees;
+        }
+
         public void UpdateEmployee(Employee employee)
         {
             connection = new SqlConnection(GetConnectionString());
@@ -149,6 +216,35 @@ namespace MilkTeaManagement.Business
             {
                 connection.Close();
             }
+        }
+
+        public bool GetGenderById(string employeeid)
+        {
+            Boolean gender = true;
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select Gender from Employee where EmployeeId = '" + employeeid + "'", connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows == true)
+                {
+                    while (reader.Read())
+                    {
+                        gender = reader.GetBoolean("Gender");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return gender;
         }
 
         public Employee GetEmployeeByUserID(int userId)

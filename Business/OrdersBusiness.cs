@@ -40,7 +40,42 @@ namespace MilkTeaManagement.Business
                         orders.Add(new Order
                         {
                             orderId = reader.GetInt32("OrderId"),
-                            employeeId = reader.GetInt32("EmployeeId").ToString(),
+                            employeeId = reader.GetString("EmployeeId"),
+                            total = reader.GetDecimal("Total"),
+                            date = reader.GetDateTime("DateCreate")
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return orders;
+        }
+
+        public List<Order> GetOrdersByEmployeeIdAndDate(string employeeid, string dateFrom, string dateTo)
+        {
+            List<Order> orders = new List<Order>();
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select * from Orders where EmployeeId like '" + employeeid + "%' and DateCreate >= '" + dateFrom + "' and DateCreate <= '" + dateTo + "'", connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows == true)
+                {
+                    while (reader.Read())
+                    {
+                        orders.Add(new Order
+                        {
+                            orderId = reader.GetInt32("OrderId"),
+                            employeeId = reader.GetString("EmployeeId"),
                             total = reader.GetDecimal("Total"),
                             date = reader.GetDateTime("DateCreate")
                         });
@@ -75,7 +110,7 @@ namespace MilkTeaManagement.Business
                         order = new Order
                         {
                             orderId = reader.GetInt32("OrderId"),
-                            employeeId = reader.GetInt32("EmployeeId").ToString(),
+                            employeeId = reader.GetString("EmployeeId"),
                             total = reader.GetDecimal("Total"),
                             date = reader.GetDateTime("DateCreate")
                         };
@@ -113,6 +148,66 @@ namespace MilkTeaManagement.Business
             {
                 connection.Close();
             }
+        }
+
+        public decimal GetTotalRevByDate(string dateFrom, string dateTo)
+        {
+            Decimal total = 0;
+
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select sum(Total) as TotalPrice from Orders where DateCreate >= '" + dateFrom + "' and DateCreate <= '" + dateTo + "'", connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows == true)
+                {
+                    while (reader.Read())
+                    {
+                        total = reader.GetDecimal("TotalPrice");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return total;
+        }
+
+        public decimal GetTotalRev()
+        {
+            Decimal total = 0;
+
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select sum(Total) as TotalPrice from Orders", connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows == true)
+                {
+                    while (reader.Read())
+                    {
+                        total = reader.GetDecimal("TotalPrice");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return total;
         }
     }
 

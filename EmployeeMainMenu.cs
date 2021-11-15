@@ -27,13 +27,14 @@ namespace MilkTeaManagement
         {
             InitializeComponent();
             accountt = account;
-            txtUsername.Text = "Welcome " + account.userName + " !";
+            txtUsername.Text = "Wellcome " + account.userName + " !";
             timer1.Start();
         }
 
         List<UserControl1> ProductControls = new List<UserControl1>();
         CategoryBusiness catList = new CategoryBusiness();
         ProductBusiness proList = new ProductBusiness();
+        EmployeeBusiness employeeList = new EmployeeBusiness();
         private decimal CalculateFreight()
         {
             decimal sum = 0;
@@ -43,7 +44,10 @@ namespace MilkTeaManagement
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Hide();
+            Login login = new Login();
+            login.ShowDialog();
+            this.Close();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -87,10 +91,7 @@ namespace MilkTeaManagement
             richTextBox1.AppendText("\n" + string.Format("{0,-30}{1,-30}{2,-20}{3,-30}", "Product", "Quantity", "Price","Sum"));
             foreach (UserControl1 uc in ProductControls)
             {
-                if (uc.Quantity >= 1) { 
                 richTextBox1.AppendText("\n" + string.Format("{0,-40}{1,-30}{2,-16}{3,-30}", uc.ProductName, uc.Quantity, uc.ProductPrice + "đ", (uc.ProductPrice*uc.Quantity) + "đ"));
-            
-                }
             }
             richTextBox1.AppendText("\n------------------------------------------------------------------------------------");
             richTextBox1.AppendText("\n"+string.Format("{0,-95}{1,-10}","Total: ", CalculateFreight().ToString()+"đ"));
@@ -129,31 +130,23 @@ namespace MilkTeaManagement
 
 
             }
-            //khong co thi de giu nguyen
             Product_DataChange(null, null);
         }
 
         SqlConnection con = new SqlConnection(new AccountBusiness().GetConnectionString());
         private void EmployeeMainMenu_Load(object sender, EventArgs e)
         {
-            //1 cai check de tim
             DataGridViewCheckBoxColumn cbColumn = new DataGridViewCheckBoxColumn();
             cbColumn.HeaderText = "Check";
             cbColumn.Name = "cbColumn";
             dataGridView1.Columns.Add(cbColumn);
-            //cot image
             DataGridViewImageColumn dgvi = new DataGridViewImageColumn();
-
-            //cot comboCategory
             comboCategory.DataSource = new CategoryBusiness().GetCategories();
             comboCategory.ValueMember = "CategoryName";
             comboCategory.SelectedItem = null;
             comboCategory.SelectedText = "--select--";
             List<Product> products = proList.GetProducts();
             dataGridView1.DataSource = products;
-
-
-
             DataGridViewImageColumn img = new DataGridViewImageColumn();
             img.HeaderText = "Preview";
             img.Name = "img";
@@ -164,13 +157,10 @@ namespace MilkTeaManagement
                 Image image2 = resizeImage(Image.FromFile(zz),new Size(100,100));
                 img.Image = image2;
             }
-
-
             dataGridView1.Columns.Add(img);
-            this.dataGridView1.Columns["Productid"].Visible = false;
-            this.dataGridView1.Columns["Categoryid"].Visible = false;
-            this.dataGridView1.Columns["Image"].Visible = false;
-
+            this.dataGridView1.Columns["productid"].Visible = false;
+            this.dataGridView1.Columns["categoryid"].Visible = false;
+            this.dataGridView1.Columns["image"].Visible = false;
             foreach (DataGridViewRow x in dataGridView1.Rows)
             {
                 x.MinimumHeight = 100;
@@ -189,17 +179,18 @@ namespace MilkTeaManagement
         }
 
         private void button1_Click(object sender, EventArgs e)
-        { 
+        {
             printPreviewDialog1.Document = printDocument1;
 
             printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprmm", 230, 600);
 
             printPreviewDialog1.ShowDialog();
             OrdersBusiness orders = new OrdersBusiness();
-            if (CalculateFreight() != 0) { 
+            if (CalculateFreight() != 0)
+            {
                 orders.InsertOrder(new Order
                 {
-                    employeeId = accountt.userId,
+                    employeeId = employeeList.GetEmployeesIdByUserId(accountt.userId),
                     total = CalculateFreight(),
                     date = DateTime.Now
                 });
@@ -207,17 +198,18 @@ namespace MilkTeaManagement
                 OrdersDetailBusiness ordersDetailBusiness = new OrdersDetailBusiness();
                 foreach (UserControl1 uc in ProductControls)
                 {
-                    if (uc.ProductID != "") { 
-                    ordersDetailBusiness.InsertOrderDetail(new OrdersDetail
+                    if (uc.ProductID != "")
                     {
-                        orderId = order.orderId,
-                        price = uc.ProductPrice,
-                        quantity = uc.Quantity,
-                        productName = uc.ProductID
-                    });}
+                        ordersDetailBusiness.InsertOrderDetail(new OrdersDetail
+                        {
+                            orderId = order.orderId,
+                            price = uc.ProductPrice,
+                            quantity = uc.Quantity,
+                            productName = uc.ProductID
+                        });
+                    }
                 }
             }
-
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)

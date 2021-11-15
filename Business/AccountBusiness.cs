@@ -37,7 +37,7 @@ namespace MilkTeaManagement.Business
                     {
                         accounts.Add(new Account
                         {
-                            userId = reader.GetInt32("UserId").ToString(),
+                            userId = reader.GetString("UserId"),
                             userName = reader.GetString("Username"),
                             passWord = reader.GetString("Password"),
                             roleId = reader.GetInt32("RoleId")
@@ -71,7 +71,7 @@ namespace MilkTeaManagement.Business
                     while (reader.Read())
                     {
                         // Doc tung record vao categories
-                        categories.Add(new Account { userName = reader.GetString("Username"), passWord = reader.GetString("Password"), roleId = reader.GetInt32("RoleId"), userId = reader.GetInt32("UserId").ToString() });
+                        categories.Add(new Account { userName = reader.GetString("Username"), passWord = reader.GetString("Password"), roleId = reader.GetInt32("RoleId"), userId = reader.GetString("UserId") });
                     }
                 }
             }

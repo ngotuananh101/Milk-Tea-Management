@@ -39,14 +39,14 @@ namespace MilkTeaManagement.Business
                     {
                         managers.Add(new Manager
                         {
-                            managerId = reader.GetInt32("ManagerId").ToString(),
+                            managerId = reader.GetString("ManagerId"),
                             managerName = reader.GetString("ManagerName"),
                             managerDob = reader.GetString("ManagerDob"),
                             managerEmail = reader.GetString("ManagerEmail"),
                             phone = reader.GetString("Phone"),
                             address = reader.GetString("Address"),
                             gender = reader.GetBoolean("Gender"),
-                            userId = reader.GetInt32("UserId").ToString()
+                            userId = reader.GetString("UserId")
                         });
                     }
                 }
@@ -128,6 +128,35 @@ namespace MilkTeaManagement.Business
             {
                 connection.Close();
             }
+        }
+
+        public bool GetGenderById(string managerid)
+        {
+            Boolean gender = true;
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select Gender from Manager where ManagerId = '" + managerid + "'", connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows == true)
+                {
+                    while (reader.Read())
+                    {
+                        gender = reader.GetBoolean("Gender");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return gender;
         }
 
         public void UpdateManager(Manager manager)
