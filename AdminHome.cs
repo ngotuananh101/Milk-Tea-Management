@@ -23,21 +23,42 @@ namespace MilkTeaManagement
         private void AdminHome_Load(object sender, EventArgs e)
         {
             con.Open();
-            SqlCommand cmd =
-                new SqlCommand(
-                    "SELECT COUNT(Orders.OrderId) As TotalOrder, COUNT(Product.ProductId) As TotalProduct, COUNT(Employee.EmployeeId) As TotalEmployee FROM Orders, Product, Employee",
-                    con);
+            SqlCommand cmd = new SqlCommand("SELECT COUNT(Orders.OrderId) As TotalOrder FROM Orders", con);
             SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             if (reader.HasRows == true)
             {
                 while (reader.Read())
                 {
                     label4.Text = reader.GetInt32("TotalOrder").ToString();
+                }
+
+            }
+            con.Close();
+            con.Open();
+            cmd = new SqlCommand("SELECT COUNT(Product.ProductId) As TotalProduct FROM Product", con);
+            reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            if (reader.HasRows == true)
+            {
+                while (reader.Read())
+                {
                     label5.Text = reader.GetInt32("TotalProduct").ToString();
+                }
+
+            }
+            con.Close();
+            con.Open();
+            cmd = new SqlCommand("SELECT COUNT(Employee.EmployeeId) As TotalEmployee FROM Employee", con);
+            reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            if (reader.HasRows == true)
+            {
+                while (reader.Read())
+                {
                     label6.Text = reader.GetInt32("TotalEmployee").ToString();
                 }
 
             }
+
+            con.Close();
         }
 
         private void label4_Click(object sender, EventArgs e)
